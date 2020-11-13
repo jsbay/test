@@ -8,4 +8,5 @@ module.exports = app => {
   const gzip = app.middleware.gzip({ threshold: 10 });
 
   router.get('/', gzip, controller.home.index);
+  router.get('/user', controller.user.index);
 };
