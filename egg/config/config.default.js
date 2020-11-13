@@ -21,6 +21,15 @@ module.exports = appInfo => {
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',
+    security: {
+      csrf: false, // 关闭 csrf的防范
+    },
+    // passportLocal: {
+    // 要校验的 username 字段 defaults to username
+    // usernameField: 'username',
+    // 要校验的 password 字段 defaults to password
+    // passwordField: 'password',
+    // },
   };
 
   return {
