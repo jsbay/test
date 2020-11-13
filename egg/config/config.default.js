@@ -2,6 +2,7 @@
 
 'use strict';
 
+const redisConfig = require('./config.redis');
 /**
  * @param {Egg.EggAppInfo} appInfo app info
  */
@@ -21,6 +22,17 @@ module.exports = appInfo => {
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',
+    security: {
+      csrf: false, // 关闭 csrf 校验
+    },
+    redis: redisConfig,
+    session: {
+      key: 'EGG_TEST',
+      maxAge: 30 * 24 * 3600 * 1000, // 30 天
+      renew: true,
+      httpOnly: true,
+      encrypt: true,
+    },
   };
 
   return {
