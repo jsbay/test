@@ -20,16 +20,17 @@ const db = async () => {
     //   userName: 'baizhanying@autobio.com.cn',
     //   pwd: 'e10adc3949ba59abbe56e057f20f883e',
     // };
-    // await ps.prepare(`UP_ATMP_R_UM_User '${params.userName}', '${params.pwd}'`);
+    // await ps.prepare(`UP_ATMP_R_UM_User 'test', 'e10adc3949ba59abbe56e057f20f883e'`);
     // const result = await ps.execute();
     // 传参
 
     ps.input('userName', sql.NVarChar);
     ps.input('psw', sql.NVarChar);
-    await ps.prepare('UP_ATMP_R_UM_User \'@userName\', \'@psw\'');
+    // await ps.prepare(`UP_ATMP_R_UM_User 'test', 'e10adc3949ba59abbe56e057f20f883e'`);
+    await ps.prepare('UP_ATMP_R_UM_User @userName, @psw');
     const params = {
-      userName: 'baizhanying@autobio.com.cn',
-      pwd: 'e10adc3949ba59abbe56e057f20f883e',
+      userName: 'test',
+      psw: 'e10adc3949ba59abbe56e057f20f883e',
     };
     const result = await ps.execute(params);
 

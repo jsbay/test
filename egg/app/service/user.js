@@ -9,9 +9,10 @@ class UserService extends Service {
       opName: 'test',
       currentPage: 1,
     };
-    const procedureStr = `[UP_ATMP_R_Base_messageList] ${params.pageLimit},${params.currentPage},'${params.opName}'`;
+    // const procedureStr = `[UP_ATMP_R_Base_messageList] ${params.pageLimit},${params.currentPage},'${params.opName}'`;
+    const procedureStr = '[UP_ATMP_R_Base_messageList] @pageLimit,@currentPage,@opName';
     const result = await this.app.db.execProcedure(procedureStr, params);
-    // console.log(result);
+    console.log(result);
     // result.roleList = JSON.parse(result.roleList);
     return result;
   }
