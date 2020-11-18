@@ -12,6 +12,7 @@ yarn add mssql
 ```
 2. 新建 ${root}/app/extend/application.js
 > 将 mssql 封装到 app 上
+
 ```bash
 touch ${root}/app/extend/application.js
 ```
