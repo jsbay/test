@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "@types/mssql": "^6.0.5",
+    "mssql": "^6.2.3"
+  },
+  "devDependencies": {
+    "egg-ts-helper": "^1.25.8"
+  }
+}
