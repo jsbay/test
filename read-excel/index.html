@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Document</title>
+  <style>
+    .flex-box{
+      display: flex;
+      flex-wrap: wrap;
+      background-image: url(./bg.png);
+    }
+    .flex-box div {
+      width: 25%;
+      box-sizing: border-box;
+      flex: 0 0 auto;
+      border: 1px solid #ccc;
+      padding: 10px 5px;
+      margin-right: -1px;
+      margin-bottom: -1px;
+    }
+
+    .page_break_after {
+      page-break-after: always;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div v-for="(line, index) in tableData" :key="index" class="flex-box page_break_after">
+        <div v-for="(item, idx) in tableData[index]" :key="idx">{{item}}</div>
+    </div>
+  </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script type="text/javascript">
+fetch('./4238.json').then((res) => res.json()).then(data => {
+  new Vue({
+    el: '#app',
+    data: {
+      list: data.data
+    },
+    computed: {
+      tableData() {
+        const temp = []
+        while (this.list.length > 0) {
+          temp.push(this.list.splice(0, 200))
+        }
+        return temp
+      }
+    }
+  })
+  
+})
+</script>
+</html>
