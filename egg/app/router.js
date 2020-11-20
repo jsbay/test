@@ -5,7 +5,17 @@
  */
 module.exports = app => {
   const { router, controller } = app;
-  const gzip = app.middleware.gzip({ threshold: 10 });
+  const auth = app.middleware.auth();
 
-  router.get('/', gzip, controller.home.index);
+  const localStrategy = app.passport.authenticate('local', { successRedirect: '/user', failureRedirect: '/login' });
+
+  router.get('/', auth, controller.home.index);
+
+  router.get('/login', controller.home.login);
+
+  router.post('/login', localStrategy);
+
+  router.get('/logout', 'home.logout');
+
+  router.get('/user', controller.user.index);
 };
